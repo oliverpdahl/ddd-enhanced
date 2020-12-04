@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
 
 $white: white;
-$black: black;
+$teal: teal;
 
 .navbar {
   margin-bottom: 0;
-  background: $black;
+  background: $teal;
 }
 body {
-  background: $black;
+  background: $teal;
   color: $white;
   font-family: "Merriweather", sans-serif;
 }
@@ -22,7 +22,7 @@ p {
   color: $white;
 }
 a:visited {
-  color: $black;
+  color: $teal;
 }
 .jumbotron {
   background: #0048cd;
