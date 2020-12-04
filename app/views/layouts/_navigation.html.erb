@@ -4,8 +4,11 @@
     </button> <%= link_to "Driver Danger Dashboard", root_path, class: 'navbar-brand' %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav mr-auto">
-        <li class='nav-item'><%= link_to 'Home', root_path, class: 'nav-link' %></li>
-
+        <li class='nav-item'><%= link_to 'Accident Growth', pages_zipCodeAccidentGrowth_path, class: 'nav-link' %></li>
+        <li class='nav-item'><%= link_to 'Time of Day', pages_accidentTimeOfDayTrends_path, class: 'nav-link' %></li>
+        <li class='nav-item'><%= link_to 'Zip Race', pages_zipBarChartRace_path, class: 'nav-link' %></li>
+        <li class='nav-item'><%= link_to 'Temp and Severity', pages_outsideTempSeverityTrend_path, class: 'nav-link' %></li>
+        <li class='nav-item'><%= link_to 'Lights vs Round Abouts', pages_lightsVsRoundAboutsYears_path, class: 'nav-link' %></li>
         </li>
       </ul>
     </div>
