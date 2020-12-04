@@ -3,6 +3,7 @@
 
 $white: white;
 $teal: teal;
+$grey: grey;
 
 .navbar {
   margin-bottom: 0;
@@ -22,7 +23,13 @@ p {
   color: $white;
 }
 a:visited {
-  color: $teal;
+  color: $white;
+}
+a:hover {
+  color: $white;
+}
+a:link {
+  color: $white;
 }
 .jumbotron {
   background: #0048cd;
@@ -36,7 +43,7 @@ a:visited {
 .link {
   color: $white;
 }
-.btn-primary {
+.btn-lg {
   color: $white;
   border-color: $white;
   margin-bottom: 5px;
