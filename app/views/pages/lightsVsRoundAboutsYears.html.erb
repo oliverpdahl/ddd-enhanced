@@ -2,6 +2,12 @@
     <h1>Traffic Lights vs Round Abouts Over the Years</h1>
     <p>Chart</p>
     <div class="w-75 text-center">
-      <%= line_chart [["Washington", "1789-04-29", "1797-03-03"]] %>
+      <% sql = 'SELECT SUM("total count") "Total Tuples"
+        FROM((SELECT COUNT(*)"total count"
+            FROM area
+            UNION
+            SELECT COUNT(*) "total count"
+            FROM accident_all))' %>
+      <%= line_chart ActiveRecord::Base.connection.execute(sql) %>
     </div>
   </div>
