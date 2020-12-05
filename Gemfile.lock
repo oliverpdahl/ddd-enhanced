@@ -87,6 +87,8 @@ GEM
     ffi (1.13.1-x86-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    highcharts-rails (6.0.3)
+      railties (>= 3.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
@@ -237,6 +239,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chartkick
+  highcharts-rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
