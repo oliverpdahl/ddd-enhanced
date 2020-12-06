@@ -1,4 +1,13 @@
   <div class="text-center">
     <h1>Outside Temperature and Severity of Accident Trend</h1>
     <p>Chart</p>
+    <div class="w-75 text-center">
+      <%= line_chart [
+        {name: "Number of Day Accidents", data: @num_accidents_day},
+        {name: "Number of Night Accidents", data: @num_accidents_night}
+        ]
+      %>
+      <%= line_chart @num_accidents_day %>
+      <%= line_chart @num_accidents_night %>
+    </div>
   </div>
