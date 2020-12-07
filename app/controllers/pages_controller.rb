@@ -70,8 +70,14 @@ class PagesController < ApplicationController
   end
 
   def lightsVsRoundAboutsYears
-    @result = helpers.getAllTrafficFeatures()
+    result = helpers.getAllTrafficFeatures()
 
+    if (@grouping == 'year')
+      result = helpers.getAllTrafficFeatures()
+    else
+      result = helpers.getAllTrafficFeatures()
+      @bump = result.collect{|i| [i['month'],i['bump']]}
+    end
   end
 
 end
