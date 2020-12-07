@@ -32,14 +32,14 @@ class PagesController < ApplicationController
   def outsideTempSeverityTrend
 
     @inputs = params[:p]
-    @low = -100.0
-    @high = 100.0
+    @low = -100
+    @high = 100
 
     if (@inputs.blank?)
       result = helpers.getAccidentSeverity()
     else
       @low = @inputs.values[0]
-      result = helpers.getAccidentSeverityLowTemp(@low, @high)
+      result = helpers.getAccidentSeverityLowTemp(0, 100)
     end
 
     @acc_severity = result.collect{|i| [i['Mo-Year'],i['Average Severity']]}
