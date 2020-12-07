@@ -76,7 +76,7 @@ class PagesController < ApplicationController
       result = helpers.getAllTrafficFeatures()
     else
       result = helpers.getAllTrafficFeatures()
-      @bump = result.collect{|i| [i['month'],i['bump']]}
+      @bump = result
     end
   end
 

@@ -3,6 +3,7 @@ module TrafficFeatureHelper
   def getAllTrafficFeatures
     sql = 'SELECT EXTRACT(YEAR FROM Start_Time) "YEAR",
     EXTRACT(MONTH FROM Start_Time) "MONTH",
+    concat(EXTRACT(MONTH FROM Start_Time), concat(\'-\', EXTRACT(YEAR FROM Start_Time))) "Mo-Year",
     COUNT( CASE WHEN BUMP = \'True\' THEN 1 END)"BUMP",
     COUNT( CASE WHEN CROSSING = \'True\' THEN 1 END)"CROSSING",
     COUNT( CASE WHEN GIVE_WAY = \'True\' THEN 1 END)"GIVE_WAY",
