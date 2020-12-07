@@ -78,7 +78,12 @@ class PagesController < ApplicationController
       result = helpers.getAllTrafficFeatures()
       @bump = result.collect{|i| [i['Mo-Year'],i['bump']]}
       @crossing = result.collect{|i| [i['Mo-Year'],i['crossing']]}
-      @give_way = result.collect{|i| [i['Mo-Year'],i['give_way']]}
+      @junction = result.collect{|i| [i['Mo-Year'],i['junction']]}
+      @no_exit = result.collect{|i| [i['Mo-Year'],i['no_exit']]}
+      @railway = result.collect{|i| [i['Mo-Year'],i['railway']]}
+      @station = result.collect{|i| [i['Mo-Year'],i['station']]}
+      @stop = result.collect{|i| [i['Mo-Year'],i['stop']]}
+      @traffic_signal = result.collect{|i| [i['Mo-Year'],i['traffic_signal']]}
     end
   end
 

@@ -1,10 +1,17 @@
   <div class="text-center">
     <h1>Traffic Lights vs Round Abouts Over the Years</h1>
-    <%= area_chart [
+    <div class="w-75 centered my-5">
+      <%= area_chart [
             {name: "Crossing", data: @crossing},
             {name: "Give Way", data: @give_way},
             {name: "Bump", data: @bump},
+            {name: "Bump", data: @bump},
+            {name: "Junction", data: @junction},
+            {name: "No Exit", data: @no_exit},
+            {name: "Railway", data: @railway},
+            {name: "Station", data: @station},
+            {name: "Traffic Signal", data: @traffic_signal},
             ]%>
-    <%= @bump %>
-    <p>Date filter and group by month and group by year</p>
+    </div>
+
   </div>
