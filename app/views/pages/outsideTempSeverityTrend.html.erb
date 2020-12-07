@@ -3,19 +3,31 @@
     <p>One thing to notice about this graph is the significant decrease in accident severity - this means that the accidents ocurring have less and less of an impact on traffic</p>
     <div class="w-75 centered my-5">
 
-      <%= line_chart @acc_severity, min: '2.2', max: '2.4' %>
+      <div>
+        <%= form_tag( {:controller => 'pages', :action => 'outsideTempSeverityTrend'}, :method => "post") do %>
+        <%= select_tag(:p, raw(
+          '<option value="none">No Filter</option>
+          <option value="low">Filter Temp Less Than 0 Celcius</option>
+          <option value="mid">Filter Temp Greater Than 0 Less Than 50</option>
+          <option value="high">Filter Temp Greater Than 50</option>'
+          )) %>
+        <%= submit_tag("Update Chart") %>
+        <% end %>
+      </div>
 
-      <table>
+      <%= line_chart @acc_severity, min: '2.2', max: '2.4' %>
+      <%= @acc_severity %>
+      <table class="table mx-auto my-3">
         <tr>
           <th>Month-Year</th>
           <th>Accident Severity</th>
         </tr>
-      <% @acc_severity.each do |group| %>
+        <% @acc_severity.each do |group| %>
         <tr>
           <td><%= group[0] %></td>
           <td><%= group[1] %></td>
         </tr>
-      <% end %>
+        <% end %>
       </table>
 
     </div>
