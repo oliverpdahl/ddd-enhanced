@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   helper TimeofdayHelper
   helper AccidentseverityHelper
+  helper TrafficFeatureHelper
 
   def zipCodeAccidentGrowth
 
@@ -69,7 +70,8 @@ class PagesController < ApplicationController
   end
 
   def lightsVsRoundAboutsYears
-    
+    @result = helpers.getAllTrafficFeatures()
+
   end
 
 end
