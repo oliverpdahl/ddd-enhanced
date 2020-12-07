@@ -6,10 +6,17 @@
 
       <div>
         <%= form_tag( {:controller => 'pages', :action => 'accidentTimeOfDayTrends'}, :method => "post") do %>
-        <%= select_tag(:p, raw(
+        <% if @grouping == 'year' %>
+          <%= select_tag(:p, raw(
+          '<option value="month">Group by Month</option>
+          <option value="year" selected="selected">Group by Year</option>'
+          )) %>
+        <% else %>
+          <%= select_tag(:p, raw(
           '<option value="month">Group by Month</option>
           <option value="year">Group by Year</option>'
           )) %>
+        <% end %>
         <%= submit_tag("Update Chart") %>
         <% end %>
       </div>
