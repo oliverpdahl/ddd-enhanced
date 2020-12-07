@@ -5,12 +5,13 @@
 
       <div>
         <%= form_tag( {:controller => 'pages', :action => 'outsideTempSeverityTrend'}, :method => "post") do %>
-        <%= number_field(:p, in: -100.0-100, step: :any) %>
+        <%= number_field(:p, in: -100.0-100.0, step: :any) %>
         <%= submit_tag("Update Chart") %>
         <% end %>
       </div>
 
       <%= @low %>
+      <%= @first %>
 
       <%= line_chart @acc_severity, min: @min, max: @max %>
       <%= @acc_severity %>
