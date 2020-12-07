@@ -33,6 +33,8 @@ class PagesController < ApplicationController
 
     result = helpers.getAccidentSeverity()
 
+    @low = helpers.getAccidentSeverityLowTemp()
+
     @acc_severity = result.collect{|i| [i['Mo-Year'],i['Average Severity']]}
 
   end
