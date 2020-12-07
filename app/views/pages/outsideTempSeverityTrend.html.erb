@@ -5,7 +5,8 @@
 
       <div>
         <%= form_tag( {:controller => 'pages', :action => 'outsideTempSeverityTrend'}, :method => "post") do %>
-        <%= number_field(:p, in: -100-100, step: 1) %>
+        <%= number_field(:p, step: 1) %>
+        <%= number_field(:p, step: 1) %>
         <%= submit_tag("Update Chart") %>
         <% end %>
       </div>
