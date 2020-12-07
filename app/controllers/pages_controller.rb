@@ -77,6 +77,8 @@ class PagesController < ApplicationController
     else
       result = helpers.getAllTrafficFeatures()
       @bump = result.collect{|i| [i['Mo-Year'],i['bump']]}
+      @crossing = result.collect{|i| [i['Mo-Year'],i['crossing']]}
+      @give_way = result.collect{|i| [i['Mo-Year'],i['give_way']]}
     end
   end
 
