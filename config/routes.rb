@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/zipCodeAccidentGrowth'
   get 'pages/accidentTimeOfDayTrends'
+  post 'pages/accidentTimeOfDayTrends'
   get 'pages/zipBarChartRace'
+  post 'pages/zipBarChartRace'
   get 'pages/outsideTempSeverityTrend'
   get 'pages/lightsVsRoundAboutsYears'
   root 'home#index'

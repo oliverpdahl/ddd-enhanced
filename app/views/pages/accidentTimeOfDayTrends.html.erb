@@ -4,30 +4,42 @@
     <p>Another thing you'll notice is the drastic decrease due to COVID lockdown and then the massive increase upon release from lockdown</p>
     <div class="w-75 centered my-5">
 
-    <%= area_chart [
-          {name: "Number of Day Accidents", data: @num_accidents_day},
-          {name: "Number of Night Accidents", data: @num_accidents_night}
-          ], title: "Best chart"
-      %>
+      <div>
+        <%= form_tag( {:controller => 'pages', :action => 'accidentTimeOfDayTrends'}, :method => "post") do %>
+        <%= select_tag(:p, raw(
+          '<option value="month">Group by Month</option>
+          <option value="year">Group by Year</option>'
+          )) %>
+        <%= submit_tag("Update Chart") %>
+        <% end %>
+      </div>
 
-      <table>
-        <tr>
-          <th>Month-Year</th>
-          <th>Number of Accidents Combined</th>
-          <th>Day Accidents Minus Night Accidents</th>
-          <th>Number of Accidents Day</th>
-          <th>Number of Accidents Night</th>
-        </tr>
-      <% @num_accidents_combined.each do |group| %>
-        <tr>
-          <td><%= group[0] %></td>
-          <td><%= group[1] %></td>
-          <td><%= group[2] %></td>
-          <td><%= group[3] %></td>
-          <td><%= group[4] %></td>
-        </tr>
-      <% end %>
-      </table>
+      <%= @grouping %>
+
+      <%= area_chart [
+            {name: "Number of Day Accidents", data: @num_accidents_day},
+            {name: "Number of Night Accidents", data: @num_accidents_night}
+            ], title: "Best chart"
+        %>
+
+        <table>
+          <tr>
+            <th>Month-Year</th>
+            <th>Number of Accidents Combined</th>
+            <th>Day Accidents Minus Night Accidents</th>
+            <th>Number of Accidents Day</th>
+            <th>Number of Accidents Night</th>
+          </tr>
+        <% @num_accidents_combined.each do |group| %>
+          <tr>
+            <td><%= group[0] %></td>
+            <td><%= group[1] %></td>
+            <td><%= group[2] %></td>
+            <td><%= group[3] %></td>
+            <td><%= group[4] %></td>
+          </tr>
+        <% end %>
+        </table>
 
     </div>
   </div>
