@@ -70,20 +70,19 @@ class PagesController < ApplicationController
   end
 
   def lightsVsRoundAboutsYears
-    result = helpers.getAllTrafficFeatures()
-
     if (@grouping == 'year')
-      result = helpers.getAllTrafficFeatures()
+      @result = helpers.getAllTrafficFeatures()
     else
-      result = helpers.getAllTrafficFeatures()
-      @bump = result.collect{|i| [i['Mo-Year'],i['bump']]}
-      @crossing = result.collect{|i| [i['Mo-Year'],i['crossing']]}
-      @junction = result.collect{|i| [i['Mo-Year'],i['junction']]}
-      @no_exit = result.collect{|i| [i['Mo-Year'],i['no_exit']]}
-      @railway = result.collect{|i| [i['Mo-Year'],i['railway']]}
-      @station = result.collect{|i| [i['Mo-Year'],i['station']]}
-      @stop = result.collect{|i| [i['Mo-Year'],i['stop']]}
-      @traffic_signal = result.collect{|i| [i['Mo-Year'],i['traffic_signal']]}
+      @result = helpers.getAllTrafficFeatures()
+      @bump = @result.collect{|i| [i['Mo-Year'],i['bump']]}
+      @crossing = @result.collect{|i| [i['Mo-Year'],i['crossing']]}
+      @junction = @result.collect{|i| [i['Mo-Year'],i['junction']]}
+      @no_exit = @result.collect{|i| [i['Mo-Year'],i['no_exit']]}
+      @railway = @result.collect{|i| [i['Mo-Year'],i['railway']]}
+      @station = @result.collect{|i| [i['Mo-Year'],i['station']]}
+      @stop = @result.collect{|i| [i['Mo-Year'],i['stop']]}
+      @traffic_signal = @result.collect{|i| [i['Mo-Year'],i['traffic_signal']]}
+      @tableResult = @result.collect{|i| [i['Mo-Year'],i['bump'],i['crossing'],i['give_way'],i['junction'],i['no_exit'],i['railway'],i['station'],i['stop'],i['traffic_signal']]}
     end
   end
 

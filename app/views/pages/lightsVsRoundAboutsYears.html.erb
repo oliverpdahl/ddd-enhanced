@@ -12,6 +12,34 @@
             {name: "Station", data: @station},
             {name: "Traffic Signal", data: @traffic_signal},
             ]%>
+      <table class="table mx-auto my-3">
+        <tr>
+          <th>Month-Year</th>
+          <th>Bump</th>
+          <th>Crossing</th>
+          <th>Give Way</th>
+          <th>Junction</th>
+          <th>No Exit</th>
+          <th>Railway</th>
+          <th>Station</th>
+          <th>Stop</th>
+          <th>Traffic Signal</th>
+        </tr>
+        <% @tableResult.each do |group| %>
+        <tr>
+          <td><%= group[0] %></td>
+          <td><%= group[1] %></td>
+          <td><%= group[2] %></td>
+          <td><%= group[3] %></td>
+          <td><%= group[4] %></td>
+          <td><%= group[5] %></td>
+          <td><%= group[6] %></td>
+          <td><%= group[7] %></td>
+          <td><%= group[8] %></td>
+          <td><%= group[9] %></td>
+        </tr>
+        <% end %>
+      </table>
     </div>
 
   </div>
