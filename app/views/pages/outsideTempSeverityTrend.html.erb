@@ -1,10 +1,22 @@
   <div class="text-center">
-    <h1>Outside Temperature and Severity of Accident Trend</h1>
+    <h1>Severity of Accident Trend</h1>
+    <p>One thing to notice about this graph is the significant decrease in accident severity - this means that the accidents ocurring have less and less of an impact on traffic</p>
     <div class="w-75 centered my-5">
-      <%= line_chart [
-        {name: "Number of Day Accidents", data: @num_accidents_day},
-        {name: "Number of Night Accidents", data: @num_accidents_night}
-        ]
-      %>
+
+      <%= line_chart @acc_severity, min: '2.2', max: '2.4' %>
+
+      <table>
+        <tr>
+          <th>Month-Year</th>
+          <th>Accident Severity</th>
+        </tr>
+      <% @acc_severity.each do |group| %>
+        <tr>
+          <td><%= group[0] %></td>
+          <td><%= group[1] %></td>
+        </tr>
+      <% end %>
+      </table>
+
     </div>
   </div>
