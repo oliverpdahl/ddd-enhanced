@@ -1,4 +1,21 @@
   <div class="text-center">
-    <h1>Changes in Zip Code Accident Growth</h1>
-    <p>Chart</p>
+    <h1>Changes in Zip Code Accident Growth Per Capita</h1>
+    <p>Zip code selection field (starts as 92521) as the most populus</p>
+    <p>Line chart</p>
+    <p>Needs to do the q
+    <p>SELECT "Most_Populous".zipcode,
+      EXTRACT(YEAR FROM accident_all.Start_Time)"Year",
+      MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1 "Quarter",
+      "Most_Populous".population,
+      ROUND(COUNT(accident_all.ID)/"Most_Populous".population, 8)"Accidents Per Capita"
+      FROM (
+      SELECT *
+      FROM (SELECT * FROM AREA ORDER BY POPULATION DESC)
+      WHERE ZIPCODE = INPUT
+      ) "Most_Populous",
+      accident_all
+      WHERE "Most_Populous".zipcode = accident_all.zipcode
+      GROUP BY "Most_Populous".zipcode, EXTRACT(YEAR FROM accident_all.Start_Time), MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1, "Most_Populous".population
+      ORDER BY EXTRACT(YEAR FROM accident_all.Start_Time), MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1, "Most_Populous".zipcode
+      ;</p>
   </div>
