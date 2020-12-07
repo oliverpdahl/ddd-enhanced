@@ -69,6 +69,7 @@ class PagesController < ApplicationController
   end
 
   def lightsVsRoundAboutsYears
+    
   end
 
 end
