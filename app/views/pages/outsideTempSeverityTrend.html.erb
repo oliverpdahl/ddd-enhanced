@@ -5,18 +5,15 @@
 
       <div>
         <%= form_tag( {:controller => 'pages', :action => 'outsideTempSeverityTrend'}, :method => "post") do %>
-        <%= select_tag(:p, raw(
-          '<option value="none">No Filter</option>
-          <option value="low">Filter Temp Less Than 0 Celcius</option>
-          <option value="mid">Filter Temp Greater Than 0 Less Than 50</option>
-          <option value="high">Filter Temp Greater Than 50</option>'
-          )) %>
+        <%= number_field(:p, in: -100.0-100, step: :any) %>
         <%= submit_tag("Update Chart") %>
         <% end %>
       </div>
 
-      <%= line_chart @acc_severity, min: '2.2', max: '2.4' %>
       <%= @low %>
+
+      <%= line_chart @acc_severity, min: @min, max: @max %>
+      <%= @acc_severity %>
       <table class="table mx-auto my-3">
         <tr>
           <th>Month-Year</th>

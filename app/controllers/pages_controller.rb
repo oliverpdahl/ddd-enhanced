@@ -31,12 +31,25 @@ class PagesController < ApplicationController
 
   def outsideTempSeverityTrend
 
-    result = helpers.getAccidentSeverity()
+    @low = params[:p]
 
-    @low = helpers.getAccidentSeverityLowTemp()
+    if (@low.blank?)
+      result = helpers.getAccidentSeverity()
+    else
+      result = helpers.getAccidentSeverityLowTemp(@low)
+    end
 
     @acc_severity = result.collect{|i| [i['Mo-Year'],i['Average Severity']]}
 
+    @min = @acc_severity[0][1]
+    @max = @acc_severity[0][1]
+    for i in 0..(@acc_severity.length()-1)
+      if @acc_severity[i][1] < @min 
+        @min = @acc_severity[i][1]
+      elsif @acc_severity[i][1] > @max 
+        @max = @acc_severity[i][1]
+      end
+    end
   end
 
   def lightsVsRoundAboutsYears
