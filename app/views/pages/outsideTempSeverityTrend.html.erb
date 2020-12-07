@@ -5,19 +5,19 @@
 
       <div>
         <%= form_tag( {:controller => 'pages', :action => 'outsideTempSeverityTrend'}, :method => "post") do %>
-        <%= label_tag(:q, "Low:") %>
-        <%= number_field(:p, step: 1) %>
-        <%= label_tag(:q, "High:") %>
-        <%= number_field(:p, step: 1) %>
+        <%= label_tag(:lowIn, "Low:") %>
+        <%= number_field(:lowIn, step: 1) %>
+        <%= label_tag(:highIn, "High:") %>
+        <%= number_field(:highIn, step: 1) %>
         <%= submit_tag("Update Chart") %>
         <% end %>
       </div>
 
-      <%= @low %>
-      <%= @first %>
+      <%= @low.blank? ? "" : "TEMPERATURE RANGE      Low Temperature: #{@low} degrees" %>
+      <%= @high.blank? ? "" : "    High Temperature: #{@high} degrees" %>
+
 
       <%= line_chart @acc_severity, min: @min, max: @max %>
-      <%= @acc_severity %>
       <table class="table mx-auto my-3">
         <tr>
           <th>Month-Year</th>

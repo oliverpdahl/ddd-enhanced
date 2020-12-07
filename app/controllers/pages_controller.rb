@@ -31,24 +31,24 @@ class PagesController < ApplicationController
 
   def outsideTempSeverityTrend
 
-    @inputs = params[:p]
-    @low = 0
-    @high = 100
+    @inputs = params[:lowIn]
+    @lowParams = params[:lowIn]
+    @highParams = params[:highIn]
     @min = 0
     @min = 0
 
-    if (@inputs.present?)
-      if(@inputs.values.present?)
-        if(@inputs.values[0].present?)
-          @low = @inputs.values[0]
+    if (@lowParams.present? || @highParams.present?)
+        if(!@lowParams.values[0].blank?)
+          @low = @lowParams.values[0]
+        else
+          @low = -100
         end
-        if(@inputs.values[1].present?)
-          @high = @inputs.values[1]
+        if(!@highParams.values[0].blank?)
+          @high = @highParams.values[0]
+        else
+          @high = 100
         end
           result = helpers.getAccidentSeverityLowTemp(@low, @high)
-      else
-        result = helpers.getAccidentSeverity()
-      end
     else
       result = helpers.getAccidentSeverity()
     end

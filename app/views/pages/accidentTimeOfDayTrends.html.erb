@@ -22,24 +22,24 @@
             ], title: "Best chart"
         %>
 
-        <table>
-          <tr>
-            <th>Month-Year</th>
-            <th>Number of Accidents Combined</th>
-            <th>Day Accidents Minus Night Accidents</th>
-            <th>Number of Accidents Day</th>
-            <th>Number of Accidents Night</th>
-          </tr>
+      <table class="table mx-auto my-3">
+        <tr>
+          <th>Month-Year</th>
+          <th>Number of Accidents Combined</th>
+          <th>Day Accidents Minus Night Accidents</th>
+          <th>Number of Accidents Day</th>
+          <th>Number of Accidents Night</th>
+        </tr>
         <% @num_accidents_combined.each do |group| %>
-          <tr>
-            <td><%= group[0] %></td>
-            <td><%= group[1] %></td>
-            <td><%= group[2] %></td>
-            <td><%= group[3] %></td>
-            <td><%= group[4] %></td>
-          </tr>
+        <tr>
+          <td><%= group[0] %></td>
+          <td><%= group[1] %></td>
+          <td><%= group[2] %></td>
+          <td><%= group[3] %></td>
+          <td><%= group[4] %></td>
+        </tr>
         <% end %>
-        </table>
+      </table>
 
     </div>
   </div>
