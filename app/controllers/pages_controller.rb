@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   helper TimeofdayHelper
   helper AccidentseverityHelper
   helper TrafficFeatureHelper
+  helper WeatherHelper
 
   def zipCodeAccidentGrowth
 
@@ -27,7 +28,7 @@ class PagesController < ApplicationController
   end
 
   def zipBarChartRace
- 
+    @result = helpers.getAllWeather()
   end
 
   def outsideTempSeverityTrend
