@@ -30,8 +30,8 @@ class PagesController < ApplicationController
   def zipBarChartRace
     @result = helpers.getAllWeather()
     @light_snow = @result.select { |hash| hash["weather_condition"] == "Light Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
-    @clear = @result.select { |hash| hash["weather_condition"] == "Clear" }.collect{|i| [i['Mo-Year'],i['Total']]}
-    @cloudy = @result.select { |hash| hash["weather_condition"] == "Cloudy" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @rain = @result.select { |hash| hash["weather_condition"] == "Rain" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @thunder = @result.select { |hash| hash["weather_condition"] == "Thunder" }.collect{|i| [i['Mo-Year'],i['Total']]}
     @drizzle = @result.select { |hash| hash["weather_condition"] == "Drizzle" }.collect{|i| [i['Mo-Year'],i['Total']]}
     @heavy_snow = @result.select { |hash| hash["weather_condition"] == "Heavy Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
     @fog = @result.select { |hash| hash["weather_condition"] == "Fog" }.collect{|i| [i['Mo-Year'],i['Total']]}

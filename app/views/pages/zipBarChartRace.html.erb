@@ -1,7 +1,30 @@
   <div class="text-center">
-    <h1>Weather Conditions with the Most Accidents</h1>
-    <p>Weather conditions selectors</p>
-    <p>Stacked area chart</p>
-    <%= area_chart [{name: "Number of Day Accidents", data: @result}] %>
-    <%= @result%>
+    <h1>Weather Conditions</h1>
+    <div class="w-75 centered my-5">
+      <%= area_chart [
+            {name: "Light Snow", data: @light_snow},
+            {name: "Rain", data: @rain},
+            {name: "Thunder", data: @thunder},
+            {name: "Drizzle", data: @drizzle},
+            {name: "Heavy Snow", data: @heavy_snow},
+            {name: "Fog", data: @fog},
+            {name: "Haze", data: @haze},
+            {name: "Light Rain", data: @light_rain},
+            {name: "Heavy Rain", data: @heavy_rain},
+            ]%>
+      <table class="table mx-auto my-3">
+        <tr>
+          <th>Month-Year</th>
+          <th>Weather Condition</th>
+          <th>Total</th>
+        </tr>
+        <% @tableResult.each do |group| %>
+        <tr>
+          <td><%= group[0] %></td>
+          <td><%= group[1] %></td>
+          <td><%= group[2] %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
