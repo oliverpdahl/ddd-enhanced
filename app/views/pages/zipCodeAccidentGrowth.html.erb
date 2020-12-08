@@ -1,21 +1,34 @@
   <div class="text-center">
-    <h1>Changes in Zip Code Accident Growth Per Capita</h1>
-    <p>Zip code selection field (starts as 92521) as the most populus</p>
-    <p>Line chart</p>
-    <p>Needs to do the q
-    <p>SELECT "Most_Populous".zipcode,
-      EXTRACT(YEAR FROM accident_all.Start_Time)"Year",
-      MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1 "Quarter",
-      "Most_Populous".population,
-      ROUND(COUNT(accident_all.ID)/"Most_Populous".population, 8)"Accidents Per Capita"
-      FROM (
-      SELECT *
-      FROM (SELECT * FROM AREA ORDER BY POPULATION DESC)
-      WHERE ZIPCODE = INPUT
-      ) "Most_Populous",
-      accident_all
-      WHERE "Most_Populous".zipcode = accident_all.zipcode
-      GROUP BY "Most_Populous".zipcode, EXTRACT(YEAR FROM accident_all.Start_Time), MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1, "Most_Populous".population
-      ORDER BY EXTRACT(YEAR FROM accident_all.Start_Time), MOD(EXTRACT(MONTH FROM accident_all.Start_Time),4) + 1, "Most_Populous".zipcode
-      ;</p>
+    <h1>Zipcode Search: Accidents Per Capita</h1>
+
+      <%= form_tag( {:controller => 'pages', :action => 'zipCodeAccidentGrowth'}, :method => "post") do %>
+        <%= label_tag(:p, "Search by Zipcode:") %>
+        <%= number_field(:p, step: 1, :value => @zipcode.to_s) %>
+        <%= submit_tag("Update Chart") %>
+        <% end %>
+
+      <h4>Current ZipCode: <%= @zipcode.to_s %></h4>
+
+      <% if(!@accidents_per_capita[0].blank?) %>
+        <%= line_chart @accidents_per_capita %>
+
+        <h2>Data</h2>
+        <table class="table mx-auto my-3">
+        <tr>
+          <th>Year</th>
+          <th>Quarter</th>
+          <th>Accidents Per Capita</th>
+        </tr>
+        <% @accidents_per_capita_table.each do |group| %>
+        <tr>
+          <td><%= group[0] %></td>
+          <td><%= group[1] %></td>
+          <td><%= group[2] %></td>
+        </tr>
+        <% end %>
+      </table>
+
+      <% else %>
+        <h4>Invalid zipcode or no accidents found. Please try another zipcode.</h4>
+      <% end %>
   </div>

@@ -4,8 +4,22 @@ class PagesController < ApplicationController
   helper AccidentseverityHelper
   helper TrafficFeatureHelper
   helper WeatherHelper
+  helper ZipcodeHelper
 
   def zipCodeAccidentGrowth
+
+    @zip_params = params[:p]
+    if (@zip_params.present?)
+      if(!@zip_params.values[0].blank?)
+        @zipcode = @zip_params.values[0]
+      end
+    else
+      @zipcode = 92521
+    end
+
+    result = helpers.getZipcodeAccidentGrowthByQuarterQuery(@zipcode)
+    @accidents_per_capita = result.collect{|i| [i['Qt-Year'],i['Accidents Per Capita']]}
+    @accidents_per_capita_table = result.collect{|i| [i['Year'],i['Quarter'],i['Accidents Per Capita']]}
 
   end
 

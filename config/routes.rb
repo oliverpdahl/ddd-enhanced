@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/zipCodeAccidentGrowth'
+  post 'pages/zipCodeAccidentGrowth'
   get 'pages/accidentTimeOfDayTrends'
   post 'pages/accidentTimeOfDayTrends'
   get 'pages/zipBarChartRace'

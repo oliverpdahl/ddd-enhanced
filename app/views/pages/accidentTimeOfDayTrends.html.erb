@@ -21,12 +21,10 @@
         <% end %>
       </div>
 
-      <%= @grouping %>
-
       <%= area_chart [
             {name: "Number of Day Accidents", data: @num_accidents_day},
             {name: "Number of Night Accidents", data: @num_accidents_night}
-            ], title: "Best chart"
+            ]
         %>
 
       <table class="table mx-auto my-3">
