@@ -29,6 +29,7 @@ class PagesController < ApplicationController
 
   def zipBarChartRace
     @result = helpers.getAllWeather()
+    @blowing_snow = @result.select { |hash| hash["weather_condition"] == "Blowing Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
   end
 
   def outsideTempSeverityTrend
