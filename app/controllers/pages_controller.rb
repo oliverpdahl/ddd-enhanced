@@ -29,7 +29,16 @@ class PagesController < ApplicationController
 
   def zipBarChartRace
     @result = helpers.getAllWeather()
-    @blowing_snow = @result.select { |hash| hash["weather_condition"] == "Blowing Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @light_snow = @result.select { |hash| hash["weather_condition"] == "Light Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @clear = @result.select { |hash| hash["weather_condition"] == "Clear" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @cloudy = @result.select { |hash| hash["weather_condition"] == "Cloudy" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @drizzle = @result.select { |hash| hash["weather_condition"] == "Drizzle" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @heavy_snow = @result.select { |hash| hash["weather_condition"] == "Heavy Snow" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @fog = @result.select { |hash| hash["weather_condition"] == "Fog" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @haze = @result.select { |hash| hash["weather_condition"] == "Haze" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @light_rain = @result.select { |hash| hash["weather_condition"] == "Light Rain" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @heavy_rain = @result.select { |hash| hash["weather_condition"] == "Heavy Rain" }.collect{|i| [i['Mo-Year'],i['Total']]}
+    @tableResult = @result.collect{|i| [i['Mo-Year'],i['weather_condition'],i['Total']]}
   end
 
   def outsideTempSeverityTrend
